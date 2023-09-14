@@ -6,27 +6,30 @@ namespace DrivinEmail.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-
+        public bool _isFileValid;
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPost()
         {
             var file = Request.Form.Files.First();
             
-            if(file.ContentType != "text/plain")
+            if(file.Length > 0 && file.ContentType != "text/plain")
             {
-                ModelState.AddModelError("Arquivo", "Esse arquivo precisa ser de tipo TXT.");
+                _isFileValid = false;
+
                 return Page();
             }
-            return Page();
+            
+            _isFileValid = true;
+            TempData["file"] = new StreamReader(file.OpenReadStream()).ReadToEnd();
+            return RedirectToPage("/Arquivos");
         }
 
         public void OnGet()
         {
-
         }
     }
 }

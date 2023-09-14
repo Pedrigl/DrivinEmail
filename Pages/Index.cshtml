@@ -5,15 +5,27 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Faça o upload do arquivo abaixo</h1>
+    <h1 class="display-4 mb-5">Faça o upload do arquivo abaixo</h1>
     <form method="post" enctype="multipart/form-data">
         <div class="text-center">
-            <h1 class="display-4">Faça o upload do arquivo abaixo</h1>
-            <input type="file" name="file" />
-            <br /><br />
+            <input type="file" name="file" id="file-input" class="form-control-file mb-3" />
+            <br />
+            @if (Model._isFileValid == false)
+            {
+                <div class="alert alert-danger" role="alert">
+                    O arquivo enviado não é um arquivo TXT válido.
+                </div>
 
-            <button type="submit">Enviar</button>
+            }
+            
+            @if (Model._isFileValid == true)
+            {
+                <div class="alert alert-success" role="alert">
+                    Procesando...
+                </div>
+            }
+            <button type="submit" class="btn btn-primary mt-3">Enviar</button>
         </div>
     </form>
-
 </div>
+
