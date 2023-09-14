@@ -12,6 +12,18 @@ namespace DrivinEmail.Pages
             _logger = logger;
         }
 
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var file = Request.Form.Files.First();
+            
+            if(file.ContentType != "text/plain")
+            {
+                ModelState.AddModelError("Arquivo", "Esse arquivo precisa ser de tipo TXT.");
+                return Page();
+            }
+            return Page();
+        }
+
         public void OnGet()
         {
 
