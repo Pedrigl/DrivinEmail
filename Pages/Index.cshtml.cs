@@ -6,7 +6,7 @@ namespace DrivinEmail.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        public bool _isFileValid;
+        public bool _isFileValid = true;
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -23,13 +23,16 @@ namespace DrivinEmail.Pages
                 return Page();
             }
             
-            _isFileValid = true;
             TempData["file"] = new StreamReader(file.OpenReadStream()).ReadToEnd();
             return RedirectToPage("/Arquivos");
         }
 
         public void OnGet()
         {
+            if (TempData["invalidFile"] != null)
+            {
+                _isFileValid = false;
+            }
         }
     }
 }

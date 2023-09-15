@@ -2,6 +2,60 @@
 @model DrivinEmail.Pages.ArquivosModel
 @{
 }
-<div class="text-center">
+<script src="https://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.js" type="text/javascript"></script>
+<script>
+    function downloadFile(filePath, fileName) {
+        $.ajax({
+            url: '/Arquivos?filePath=' + filePath,
+            type: 'POST',
+            success: function (data, textStatus, jqXHR) {
+                // handle the successful response here
+                var blob = new Blob([data]);
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = fileName;
+                link.click();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // handle the error response here
+                console.error("Failed to download file: " + errorThrown);
+            }
+        });
 
+    }
+
+</script>
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <h1>Arquivos</h1>
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.EmailFiles)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="downloadFile('@item.Path','@item.Name')">Download</button>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>
+                    <a asp-page="Index">Voltar</a>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

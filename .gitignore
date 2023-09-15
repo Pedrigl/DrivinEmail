@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/wwwroot/EmailFiles/email1.txt
+/wwwroot/EmailFiles/email2.txt
+/wwwroot/EmailFiles/email3.txt
+/wwwroot/EmailFiles/email4.txt
+/wwwroot/EmailFiles/email5.txt
+/wwwroot/EmailFiles/email6.txt
+/wwwroot/EmailFiles/email7.txt
