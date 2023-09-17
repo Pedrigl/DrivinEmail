@@ -77,16 +77,6 @@ namespace DrivinEmail.Pages
             }
         }
 
-        private MemoryStream CreateEmailFileInMemoryStream(string address)
-        {
-            var emailFileStream = new MemoryStream();
-            var streamWriter = new StreamWriter(emailFileStream);
-            
-                streamWriter.WriteLine(address);
-            
-            emailFileStream.Position = 0;
-            return emailFileStream;
-        }
 
         private List<string> CreateFiveEmailsList()
         {
