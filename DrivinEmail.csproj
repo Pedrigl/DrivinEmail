@@ -7,12 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="EmailFiles\email1.txt" />
+    <Content Include="EmailFiles\email2.txt" />
+    <Content Include="EmailFiles\email3.txt" />
+    <Content Include="EmailFiles\email4.txt" />
+    <Content Include="EmailFiles\email5.txt" />
+    <Content Include="EmailFiles\email6.txt" />
+    <Content Include="EmailFiles\email7.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MimeKit" Version="4.2.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.8.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\EmailFiles\" />
+    <Folder Include="EmailFiles\" />
   </ItemGroup>
 
 </Project>

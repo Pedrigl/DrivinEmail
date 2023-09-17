@@ -57,7 +57,7 @@ namespace DrivinEmail.Pages
 
         private void CreateEmailFiles(List<string> concatenatedAdressesList)
         {
-            var filesPath = _hostingEnvironment.WebRootPath.Replace(@"\",@"/") + "/EmailFiles/";
+            var filesPath = _hostingEnvironment.ContentRootPath.Replace(@"\",@"/") + "/EmailFiles/";
 
             for (int i = 0; i < concatenatedAdressesList.Count; i++)
             {
